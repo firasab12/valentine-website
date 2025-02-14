@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Eternal Love for Alaa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: url('heart-cursor.png'), auto;
+    }
+    body {
+      background: #ffebee;
+      font-family: 'Pacifico', cursive;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .header {
+      background: linear-gradient(rgba(255, 192, 203, 0.8), rgba(255, 105, 180, 0.8)),
+                  url('https://example.com/your-romantic-background.jpg');
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4em;
+      color: #c62828;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+    .love-button {
+      background-color: #ff4d6d;
+      color: white;
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    .love-button:hover {
+      background-color: #e63950;
+    }
+    #loveLetter {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(198, 40, 40, 0.3);
+      max-width: 600px;
+      z-index: 1000;
+      text-align: center;
+    }
+    .gift-section, .date-section, .places-section, .valentine-section {
+      text-align: center;
+      padding: 50px 20px;
+      background: #fff5f8;
+      margin-top: 20px;
+    }
+    .gift-section h2, .date-section h2, .places-section h2, .valentine-section h2 {
+      font-size: 2.5em;
+      color: #c62828;
+    }
+    .gift-options, .date-options {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .gift-button, .date-button, .valentine-button {
+      background-color: #ff4d6d;
+      color: white;
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .gift-button:hover, .date-button:hover, .valentine-button:hover {
+      background-color: #e63950;
+    }
+    .places-list {
+      list-style: none;
+      font-size: 1.5em;
+      color: #c62828;
+      padding: 20px;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    /* Falling flowers animation */
+    .flower-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 999;
+    }
+    .flower {
+      position: absolute;
+      font-size: 24px;
+      animation: flowerFall 6s linear infinite;
+    }
+    @keyframes flowerFall {
+      0% { opacity: 0; transform: translateY(-50px) rotate(0deg); }
+      10% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
+    }
+    /* Valentine section styling */
+    .valentine-section {
+      text-align: center;
+      padding: 50px 20px;
+      background: #ffeef2;
+      margin-top: 20px;
+    }
+    .valentine-section h2 {
+      font-size: 2.5em;
+      color: #c62828;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Falling Flowers -->
+  <div class="flower-container" id="flowers"></div>
+
+  <header class="header">
+    <h1 class="title">Happy Valentine's Day, Alaa! 💖</h1>
+    <p class="subtitle">You're the missing piece to my puzzle</p>
+    <button onclick="openLoveLetter()" class="love-button">Open My Heart</button>
+  </header>
+
+  <div id="loveLetter">
+    <h2>My Dearest Alaa,</h2>
+    <p>Alaa, on this first Valentine's Day, my heart swells with joy as I reflect on the journey we're beginning together. Your smile is the spark that lights up my world, and with every word, every laugh shared between us, I feel a love so pure and true. Hand in hand, we're stepping into a future full of promises, where our hearts beat as one. Today marks the beginning of a story that I can't wait to write with you, Alaa, filling every page with moments of happiness, tenderness, and love. You are my home, my warmth, and I’m so grateful for this day that celebrates the start of forever with you. </p>
+    <button onclick="closeLoveLetter()" class="love-button">Close</button>
+  </div>
+
+  <div class="valentine-section">
+    <h2>Will you be my Valentine?</h2>
+    <button id="yesButton" class="valentine-button" onclick="valentineYes()">Yes</button>
+    <button id="noButton" class="valentine-button" onmouseover="moveNoButton()">No</button>
+    <p id="valentineResponse" style="margin-top:20px; font-size: 1.5em; color: #c62828;"></p>
+  </div>
+
+  <div class="gift-section">
+    <h2>Choose Your Valentine's Gift 💝</h2>
+    <div class="gift-options">
+      <button class="gift-button" onclick="chooseGift('250 dollars')">$250 Cash 💵</button>
+      <button class="gift-button" onclick="chooseGift('Clothes')">Beautiful Clothes 👗</button>
+    </div>
+    <p id="selectedGift" style="margin-top: 20px; font-size: 1.5em; color: #c62828;"></p>
+  </div>
+
+  <div class="date-section">
+    <h2>Pick the Date of My Arrival ✈️</h2>
+    <div class="date-options">
+      <button class="date-button" onclick="chooseDate('23rd')">23rd</button>
+      <button class="date-button" onclick="chooseDate('25th')">25th</button>
+      <button class="date-button" onclick="chooseDate('26th')">26th</button>
+      <button class="date-button" onclick="chooseDate('27th')">27th</button>
+    </div>
+    <p id="selectedDate" style="margin-top: 20px; font-size: 1.5em; color: #c62828;"></p>
+  </div>
+
+  <div class="places-section">
+    <h2>Our Best Places to Visit in Qatar 🇶🇦</h2>
+    <ul class="places-list" id="placesList">
+      <li>
+        <h3>Lusail Winter Land</h3>
+        <img src="lusail.jpg" alt="Lusail Winter Land" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+      </li>
+      <li>
+        <h3>The Grand Pavilion Restaurant</h3>
+        <img src="grand-pavilion.jpg" alt="The Grand Pavilion Restaurant" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+      </li>
+      <li>
+        <h3>Elegant Breeze Cafe</h3>
+        <img src="elegant.jpg" alt="Elegant Breeze Cafe" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+      </li>
+      <li>
+        <h3>Rooftop Paradise</h3>
+        <img src="fairmont-and-raffles-192-2080x1388-1.jpg" alt="Rooftop Paradise" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+      </li>
+    </ul>
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Falling flowers animation
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.innerHTML = '🌸';
+      flower.className = 'flower';
+      flower.style.left = Math.random() * 100 + '%';
+      flower.style.fontSize = (20 + Math.random() * 20) + 'px';
+      flower.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.getElementById('flowers').appendChild(flower);
+      setTimeout(() => {
+        flower.remove();
+      }, 10000);
+    }
+    setInterval(createFlower, 300);
+
+    // Love letter functions
+    function openLoveLetter() {
+      document.getElementById("loveLetter").style.display = "block";
+    }
+    function closeLoveLetter() {
+      document.getElementById("loveLetter").style.display = "none";
+    }
+
+    // Valentine question functions
+    function valentineYes() {
+      document.getElementById("valentineResponse").innerText = "Yay! I’m over the moon! 💕";
+    }
+    function moveNoButton() {
+      const noButton = document.getElementById("noButton");
+      // Move the button to a random position within the window
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.position = "absolute";
+      noButton.style.left = x + "px";
+      noButton.style.top = y + "px";
+      document.getElementById("valentineResponse").innerText = "Hmm, try again... 😉";
+    }
+
+    // Gift and Date functions
+    function chooseGift(gift) {
+      document.getElementById("selectedGift").innerText = "You chose: " + gift + " 🎁";
+    }
+    function chooseDate(date) {
+      document.getElementById("selectedDate").innerText = "You chose: " + date + " ✈️";
+    }
+  </script>
+</body>
+</html>
+
+
+
